@@ -125,9 +125,10 @@ select:disabled {
 
 
 
-main > form p[role="alert"],
-main > p[role="alert"] {
-  margin: -18px 0 20px;
+main > form p[role="alert"] {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
   padding: 11px 14px;
   border: 1px solid #fecaca;
   border-radius: 8px;
