@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { updateTaskStatus } from "@/lib/tasks";
+
+
+import {
+  deleteTask,
+  updateTaskStatus,
+} from "@/lib/tasks";
 
 import {
   TASK_STATUSES,
@@ -126,6 +131,68 @@ export async function PATCH(
     return NextResponse.json(
       {
         error: "Failed to update task",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
+
+
+export async function DELETE(
+  request: NextRequest,
+  context: RouteContext
+) {
+  try {
+    const { id: idParam } =
+      await context.params;
+
+    const id = parseTaskId(idParam);
+
+    if (id === null) {
+      return NextResponse.json(
+        {
+          error: "Invalid task ID",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const deleted =
+      await deleteTask(id);
+
+    if (!deleted) {
+      return NextResponse.json(
+        {
+          error: "Task not found",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        message:
+          "Task deleted successfully",
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    console.error(
+      "DELETE /api/tasks/:id error:",
+      error
+    );
+
+    return NextResponse.json(
+      {
+        error: "Failed to delete task",
       },
       {
         status: 500,
