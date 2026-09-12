@@ -97,19 +97,6 @@ Open the application in your browser:
 http://localhost:3000
 ```
 
-## Production Build
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-To run the production application:
-
-```bash
-npm start
-```
 
 ## SQL Safety
 
@@ -117,10 +104,7 @@ The application uses parameterized SQL queries for database operations instead o
 
 ## Database Note
 
-The assessment mentioned MySQL as the required database. I implemented the database layer using PostgreSQL because PostgreSQL was available in my local development environment.
+The assessment mentioned MySQL as the database. I implemented the database layer using PostgreSQL because PostgreSQL was available in my local development environment due to some issue in my mysql.
 
 The application functionality remains the same, including creating, reading, updating, and deleting tasks.
 
-## Author
-
-Built as a full-stack development assessment project using Next.js and PostgreSQL.
