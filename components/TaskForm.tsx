@@ -129,9 +129,11 @@ export default function TaskForm({
       </div>
 
       {error && (
-        <p role="alert">
-          {error}
-        </p>
+        
+          <p role="alert">
+            {error}
+          </p>
+     
       )}
 
       <button
